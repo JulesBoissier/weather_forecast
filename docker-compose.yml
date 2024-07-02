@@ -1,0 +1,13 @@
+version: '3.7'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - OPEN_WEATHER_KEY=${OPEN_WEATHER_KEY}
+    ports:
+      - "8000:80"
+    volumes:
+      - .:/app

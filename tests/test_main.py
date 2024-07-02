@@ -28,4 +28,4 @@ class TestApp(unittest.TestCase):
             response = client.get("/city_weather?city_name=Paris&date=01-01-2015")
 
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(response.json(), self.response_dict2)
+        self.assertEqual(response.json(), self.response_dict)

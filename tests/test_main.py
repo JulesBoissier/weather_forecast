@@ -19,7 +19,8 @@ class TestApp(unittest.TestCase):
         "humidity": 65,
     }
 
-    @patch("app.clients.open_weather_client.OpenWeatherClient.get_weather")
+    #Need to patch weather service
+    @patch("app.weather_service.WeatherService.get_weather")
     def test_positive_response(self, mock_get_weather):
 
         mock_get_weather.return_value = self.response_dict

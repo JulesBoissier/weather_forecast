@@ -5,6 +5,8 @@ from fastapi import FastAPI
 import uvicorn
 
 from app.clients.open_weather_client import OpenWeatherClient
+from app.weather_service import WeatherService
+from app.database.database import get_db
 
 load_dotenv(find_dotenv())
 
@@ -16,7 +18,10 @@ app = FastAPI()
 @app.get("/city_weather")
 def get_city_data(city_name: str, date: str):
     client = OpenWeatherClient(api_key=API_KEY)
-    data = client.get_weather(date = date, city_name=city_name)
+
+    with get_db() as db:
+        service = WeatherService(db = db, api_client = client)
+        data = service.get_weather(date = date, city_name=city_name)
     return data
 
 

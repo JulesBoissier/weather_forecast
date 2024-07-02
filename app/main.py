@@ -3,7 +3,7 @@ import os
 from fastapi import FastAPI
 import uvicorn
 
-from app.clients.open_weather_handler import get_weather
+from app.clients.open_weather_client import get_weather
 
 
 app = FastAPI()
